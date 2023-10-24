@@ -1,0 +1,1 @@
+C:\VC++2023\chapter2\TemplateFuncApp\x64\Debug\TemplateFuncApp.exe
