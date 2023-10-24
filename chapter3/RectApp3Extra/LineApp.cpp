@@ -29,8 +29,10 @@ void LineApp::mouseDown(int x, int y)
 
 void LineApp::mouseRDown(int x, int y)
 {
-	lines[lineCount - 1]->moveTo(x, y);
-	clearAndUpdate();
+	if (lineCount > 0) {
+		lines[lineCount - 1]->moveTo(x, y);
+		clearAndUpdate();
+	}
 }
 
 void LineApp::paint()
