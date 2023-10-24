@@ -4,7 +4,6 @@
 #include <memory>
 using std::cout; using std::endl;
 using std::shared_ptr;
-using std::make_shared;
 
 struct CoinMoney {
 	int c50;
@@ -29,9 +28,9 @@ T CoinMoney_add(const T m1, const T m2)
 
 // Exer2
 template <typename T1, typename T2>
-auto CoinMoney_add(const T1 m1, const T2 m2) 
+T1 CoinMoney_add(const T1 m1, const T2 m2) 
 {
-	auto psum(new CoinMoney());
+	T1 psum(new CoinMoney());
 	psum->c50 = m1->c50 + m2->c50;
 	psum->c100 = m1->c100 + m2->c100;
 	psum->c500 = m1->c500 + m2->c500;
@@ -69,13 +68,13 @@ int main()
 
 	// Exer2: smart pointer & C-pointer
 	shared_ptr<CoinMoney> sp;
-	sp = CoinMoney_add(sp1, make_shared<CoinMoney>(*cp1));
+	sp = CoinMoney_add(sp1, cp1);
 	cout << "두 동전 다발의 합: ";
 	CoinMoney_print(*sp);
 
 	// Exer2 : C-pointer & smart pointer
 	CoinMoney* cp;
-	cp = CoinMoney_add(cp1, sp1.get());
+	cp = CoinMoney_add(cp1, sp1);
 	cout << "두 동전 다발의 합: ";
 	CoinMoney_print(*cp);
 
