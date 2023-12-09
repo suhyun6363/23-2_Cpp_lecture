@@ -68,18 +68,18 @@ bool Rect::operator>(const Rect& right) // 크기만 비교하기 때문에 상수 레퍼런스�
 		return false;
 }
 
-Rect& Rect::operator++()
+Rect& Rect::operator++()		// 전위 연산자
 {
 	++lowerRightX;
 	++lowerRightY;
-	return *this;
+	return *this;			// 객체의 레퍼런스 반환
 }
 
-Rect Rect::operator++(int k)
+Rect Rect::operator++(int k)			// 후위 연산자
 {
 	Rect temp(upperLeftX, upperLeftY, lowerRightX, lowerRightY);
 	++(*this);
-	return temp;
+	return temp;	// 복사본 반환
 }
 
 int Rect::getUpperLeftX() const
@@ -131,21 +131,21 @@ bool operator<(const Rect& left, const Rect& right)
 		return false;
 }
 
-Rect& operator--(Rect& r)
+Rect& operator--(Rect& r) // 전위 연산자
 {
 	int lrx = r.getLowerRightX();
 	int lry = r.getLowerRightY();
 	r.setLowerRightX(--lrx);
 	r.setLowerRightY(--lry);
-	return r;
+	return r;		// 객체 레퍼런스 반환
 }
 
-Rect operator--(Rect& r, int k)
+Rect operator--(Rect& r, int k)		// 후위 연산자
 {
 	Rect temp(r);		// Rect temp = r;
 	--r;
-	return temp;
-}
+	return temp;		// 복사본 반환
+}	
 
 // console version
 std::ostream& operator<<(std::ostream& os, const Rect& r)			// cout 객체를 생성하는 ostream 클래스
